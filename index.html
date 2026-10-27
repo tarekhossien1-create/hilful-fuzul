@@ -1,21 +1,8 @@
-হিলফুল ফুজুল যুব সংঘ - GitHub Pages + Firebase
-
-১) index.html আপনার GitHub repository-তে index.html হিসেবে আপলোড/replace করুন।
-২) Firebase Console-এ Authentication > Sign-in method থেকে Email/Password চালু করুন।
-৩) Realtime Database তৈরি করুন।
-৪) Firebase Project settings > General > Your apps থেকে Web app config কপি করে index.html-এর firebaseConfig-এ PASTE_... মানগুলো প্রতিস্থাপন করুন। databaseURL-ও আপনার প্রকৃত URL হতে হবে।
-৫) Realtime Database > Rules-এ database.rules.json-এর নিয়ম বসিয়ে Publish করুন।
-৬) Authentication > Users থেকে প্রথম এডমিনের account তৈরি করুন। UID কপি করুন। Realtime Database Data tab-এ roles/<ADMIN_UID> নামে node তৈরি করে নিচের তথ্য দিন:
-   name: "এডমিন"
-   role: "admin"
-   permissions: "full"
-   (Firebase Console-এ প্রথম এডমিন role node হাতে তৈরি করুন; অ্যাপের মাধ্যমে প্রথম এডমিন নিজে তৈরি করা যাবে না।)
-৭) এরপর GitHub Pages-এ Settings > Pages থেকে main / root প্রকাশ করুন।
-৮) অন্য ব্যবহারকারীদের Authentication > Users থেকে account তৈরি করে UID নিন, তারপর এডমিন লগইন করে Users & Permissions tab থেকে role সেট করুন।
-
-গুরুত্বপূর্ণ সীমাবদ্ধতা:
-- GitHub Pages-এ এটি একটি static HTML frontend; Python/Flask লাগবে না।
-- Firebase config সাধারণত frontend-এ থাকে; নিরাপত্তা অবশ্যই Database Rules-এ নির্ভর করে। Rules না বসিয়ে বাস্তব আর্থিক তথ্য দেবেন না।
-- এই প্রাথমিক সংস্করণে edit permission selection আছে, তবে আয়-ব্যয়ের সম্পাদনা UI সীমিত; delete/add permissions কার্যকর।
-- Database Rules-এ role/permissions যাচাই করা হয়; rules JSON publish করার পর Test rules দিয়ে যাচাই করুন।
-- বাস্তব ব্যবহারের আগে test project-এ পরীক্ষা করে নিন এবং নিয়মিত export/backup রাখুন।
+const firebaseConfig = {
+  apiKey: "AIzaSyCShgbB89pXztyVLe5a9M0rGGbpTtf_0ss",
+  authDomain: "hilful-fuzul-bc9bb.firebaseapp.com",
+  projectId: "hilful-fuzul-bc9bb",
+  storageBucket: "hilful-fuzul-bc9bb.firebasestorage.app",
+  messagingSenderId: "329333550282",
+  appId: "1:329333550282:web:38e40a18bdb7ffa3ccd833"
+};
