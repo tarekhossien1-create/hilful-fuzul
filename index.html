@@ -3,322 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>হিলফুল ফুজুল যুব সংঘ, নারায়ণগছ</title>
+    <title>হিলফুল ফুযুল যুব সংঘ</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kalpurush&family=Hind+Siliguri:wght@400;600;700&display=swap');
-        body { font-family: 'Hind Siliguri', 'Kalpurush', sans-serif; }
-        @media print { .no-print { display: none !important; } }
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 to-teal-100 text-gray-800 pb-20 min-h-screen">
+<body class="bg-gradient-to-br from-emerald-50 to-teal-100 text-gray-800 min-h-screen pb-24">
 
     <!-- Header -->
-    <header class="bg-gradient-to-r from-emerald-700 to-teal-800 text-white shadow-xl sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="bg-white text-emerald-700 p-2.5 rounded-2xl shadow-md w-12 h-12 flex items-center justify-center font-bold text-2xl">
-                    হ
+    <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white text-emerald-600 p-2 rounded-full font-bold shadow">
+                    <i class="fa-solid fa-hands-holding-child text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold tracking-wide">হিলফুল ফুজুল যুব সংঘ</h1>
-                    <p class="text-xs text-emerald-200">নারায়ণগছ, তেঁতুলিয়া, পঞ্চগড়</p>
+                    <h1 class="text-lg font-bold tracking-wide">হিলফুল ফুযুল যুব সংঘ</h1>
+                    <p class="text-xs text-emerald-100">নারায়ণগছ, তেঁতুলিয়া, পঞ্চগড়</p>
                 </div>
             </div>
-            
-            <div class="flex items-center space-x-2 space-x-reverse">
-                <span id="roleBadge" class="bg-emerald-900/60 text-emerald-200 text-xs px-3 py-1.5 rounded-full font-semibold border border-emerald-600">সাধারণ সদস্য</span>
-                <button onclick="openAuthModal()" class="bg-amber-500 hover:bg-amber-600 text-gray-900 text-xs md:text-sm font-bold px-3.5 py-2 rounded-xl transition shadow-lg flex items-center gap-1.5">
-                    <i class="fas fa-lock"></i> <span id="authBtnText">লগইন</span>
-                </button>
-            </div>
+            <button onclick="openLoginModal()" class="bg-white text-emerald-600 px-3 py-1.5 rounded-full text-sm font-semibold shadow hover:bg-emerald-50 transition">
+                <i class="fa-solid fa-right-to-bracket mr-1"></i> লগইন
+            </button>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-6xl mx-auto px-3 py-6 space-y-6">
+    <main class="max-w-4xl mx-auto p-4 space-y-6">
 
         <!-- Summary Cards -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-white p-5 rounded-2xl shadow-md border border-emerald-100 flex items-center justify-between">
+        <section class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-xl shadow-md border border-emerald-100 flex items-center justify-between">
                 <div>
-                    <p class="text-xs text-gray-500 font-semibold">মোট আয় / জমা</p>
-                    <h3 id="totalIncome" class="text-2xl font-bold text-emerald-600 mt-1">৳ 0</h3>
+                    <p class="text-xs text-gray-500 font-medium">মোট চাঁদা / ফান্ড</p>
+                    <h2 class="text-xl font-bold text-emerald-600 mt-1">৳ ০</h2>
                 </div>
-                <div class="bg-emerald-100 text-emerald-600 p-3.5 rounded-2xl">
-                    <i class="fas fa-wallet text-xl"></i>
+                <div class="bg-emerald-100 text-emerald-600 p-3 rounded-full">
+                    <i class="fa-solid fa-wallet text-xl"></i>
                 </div>
             </div>
-
-            <div class="bg-white p-5 rounded-2xl shadow-md border border-rose-100 flex items-center justify-between">
+            <div class="bg-white p-4 rounded-xl shadow-md border border-rose-100 flex items-center justify-between">
                 <div>
-                    <p class="text-xs text-gray-500 font-semibold">মোট ব্যয় / খরচ</p>
-                    <h3 id="totalExpense" class="text-2xl font-bold text-rose-600 mt-1">৳ 0</h3>
+                    <p class="text-xs text-gray-500 font-medium">বর্তমান ব্যালেন্স</p>
+                    <h2 class="text-xl font-bold text-rose-600 mt-1">৳ ০</h2>
                 </div>
-                <div class="bg-rose-100 text-rose-600 p-3.5 rounded-2xl">
-                    <i class="fas fa-receipt text-xl"></i>
-                </div>
-            </div>
-
-            <div class="bg-white p-5 rounded-2xl shadow-md border border-sky-100 flex items-center justify-between">
-                <div>
-                    <p class="text-xs text-gray-500 font-semibold">বর্তমান ব্যালেন্স</p>
-                    <h3 id="netBalance" class="text-2xl font-bold text-blue-600 mt-1">৳ 0</h3>
-                </div>
-                <div class="bg-blue-100 text-blue-600 p-3.5 rounded-2xl">
-                    <i class="fas fa-piggy-bank text-xl"></i>
+                <div class="bg-rose-100 text-rose-600 p-3 rounded-full">
+                    <i class="fa-solid fa-piggy-bank text-xl"></i>
                 </div>
             </div>
         </section>
 
         <!-- Navigation Tabs -->
-        <div class="hidden md:flex bg-white rounded-2xl shadow-md p-2 border border-gray-200 justify-around text-sm font-semibold">
-            <button onclick="switchTab('subscriptions')" id="tab-subscriptions" class="tab-btn px-4 py-2.5 rounded-xl text-emerald-700 bg-emerald-50 transition">
-                <i class="fas fa-calendar-check mr-1.5"></i> মাসিক চাঁদা তালিকা
+        <nav class="bg-white rounded-xl shadow-md p-2 border border-gray-200 flex justify-around text-sm font-semibold">
+            <button onclick="switchTab('subscriptions')" id="tab-subscriptions" class="tab-btn px-3 py-2.5 rounded-lg text-emerald-600 bg-emerald-50 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-calendar-check"></i> চাঁদা
             </button>
-            <button onclick="switchTab('donations')" id="tab-donations" class="tab-btn px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition">
-                <i class="fas fa-hand-holding-heart mr-1.5"></i> দান ও অনুদান
+            <button onclick="switchTab('donations')" id="tab-donations" class="tab-btn px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-hand-holding-heart"></i> দান
             </button>
-            <button onclick="switchTab('expenses')" id="tab-expenses" class="tab-btn px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition">
-                <i class="fas fa-minus-circle mr-1.5"></i> ব্যয়ের হিসাব
+            <button onclick="switchTab('expenses')" id="tab-expenses" class="tab-btn px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-file-invoice-dollar"></i> ব্যয়
             </button>
-            <button onclick="switchTab('members')" id="tab-members" class="tab-btn px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition">
-                <i class="fas fa-users mr-1.5"></i> সদস্য তালিকা
+            <button onclick="switchTab('settings')" id="tab-settings" class="tab-btn px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100 transition flex items-center gap-1.5 admin-only hidden">
+                <i class="fa-solid fa-gear"></i> সেটিংস
             </button>
-            <button onclick="switchTab('settings')" id="tab-settings" class="tab-btn px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition admin-only hidden">
-                <i class="fas fa-cogs mr-1.5"></i> পিন ও সেটিংস
-            </button>
-        </div>
+        </nav>
 
-        <!-- Action Bar -->
-        <div class="bg-white p-4 rounded-2xl shadow-md flex flex-wrap gap-3 justify-between items-center no-print">
-            <div class="flex items-center gap-2">
-                <button id="addTxBtn" onclick="openTxModal()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
-                    <i class="fas fa-plus-circle"></i> নতুন এন্ট্রি যোগ করুন
-                </button>
+        <!-- TAB 1: SUBSCRIPTIONS -->
+        <div id="content-subscriptions" class="tab-content active space-y-4">
+            <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 space-y-3">
+                <label class="block text-sm font-semibold text-gray-700">মাস নির্বাচন করুন:</label>
+                <select class="w-full border border-gray-300 rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <option>সকল মাস (সর্বমোট)</option>
+                    <option>জানুয়ারি</option>
+                    <option>ফেব্রুয়ারি</option>
+                </select>
             </div>
-            <div class="flex items-center gap-2">
-                <button onclick="window.print()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold px-4 py-2.5 rounded-xl border flex items-center gap-1.5 transition">
-                    <i class="fas fa-print"></i> প্রিন্ট রিপোর্ট
-                </button>
-            </div>
-        </div>
-
-        <!-- TAB 1: MONTHLY SUBSCRIPTIONS (MONTH FILTER) -->
-        <div id="content-subscriptions" class="tab-content bg-white rounded-2xl shadow-md p-5 border border-gray-200 space-y-4">
-            <div class="flex flex-wrap justify-between items-center border-b pb-3 gap-3">
-                <h3 class="font-bold text-gray-800 text-base">মাসিক চাঁদা আদায় রেকর্ড</h3>
-                <div class="flex items-center gap-2">
-                    <label class="text-xs font-semibold text-gray-500">মাস নির্বাচন করুন:</label>
-                    <select id="monthFilter" onchange="renderData()" class="border border-gray-300 rounded-xl px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500 bg-gray-50 font-semibold">
-                        <option value="all">সকল মাস (সর্বমোট)</option>
-                        <option value="01">জানুয়ারি</option>
-                        <option value="02">ফেব্রুয়ারি</option>
-                        <option value="03">মার্চ</option>
-                        <option value="04">এপ্রিল</option>
-                        <option value="05">মে</option>
-                        <option value="06">জুন</option>
-                        <option value="07">জুলাই</option>
-                        <option value="08">আগস্ট</option>
-                        <option value="09">সেপ্টেম্বর</option>
-                        <option value="10">অক্টোবর</option>
-                        <option value="11">নভেম্বর</option>
-                        <option value="12">ডিসেম্বর</option>
-                    </select>
-                </div>
-            </div>
-            <div class="overflow-x-auto">
+            <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
                 <table class="w-full text-left text-sm text-gray-600">
-                    <thead class="bg-emerald-50 text-emerald-800 font-semibold text-xs border-b">
+                    <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
                         <tr>
-                            <th class="p-3">তারিখ</th>
-                            <th class="p-3">সদস্যের নাম</th>
+                            <th class="p-3">তারিখ / নাম</th>
                             <th class="p-3">মাসের নাম / বিবরণ</th>
-                            <th class="p-3">পরিমাণ</th>
-                            <th class="p-3 text-right staff-only hidden">অ্যাকশন</th>
+                            <th class="p-3 text-right">পরিমাণ</th>
                         </tr>
                     </thead>
-                    <tbody id="subTableBody" class="divide-y divide-gray-100"></tbody>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="p-3" colspan="3" class="text-center text-gray-400">কোনো তথ্য নেই</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
 
         <!-- TAB 2: DONATIONS -->
-        <div id="content-donations" class="tab-content hidden bg-white rounded-2xl shadow-md p-5 border border-gray-200 space-y-4">
-            <h3 class="font-bold text-gray-800 text-base border-b pb-3">দান ও অনুদান তালিকা</h3>
-            <div class="overflow-x-auto">
+        <div id="content-donations" class="tab-content space-y-4">
+            <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
                 <table class="w-full text-left text-sm text-gray-600">
-                    <thead class="bg-blue-50 text-blue-800 font-semibold text-xs border-b">
+                    <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
                         <tr>
-                            <th class="p-3">তারিখ</th>
-                            <th class="p-3">দাতা / উৎস</th>
+                            <th class="p-3">দাতার নাম</th>
                             <th class="p-3">বিবরণ</th>
-                            <th class="p-3">পরিমাণ</th>
-                            <th class="p-3 text-right staff-only hidden">অ্যাকশন</th>
+                            <th class="p-3 text-right">পরিমাণ</th>
                         </tr>
                     </thead>
-                    <tbody id="donationTableBody" class="divide-y divide-gray-100"></tbody>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="p-3" colspan="3" class="text-center text-gray-400">কোনো তথ্য নেই</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
 
         <!-- TAB 3: EXPENSES -->
-        <div id="content-expenses" class="tab-content hidden bg-white rounded-2xl shadow-md p-5 border border-gray-200 space-y-4">
-            <h3 class="font-bold text-gray-800 text-base border-b pb-3">ব্যয় / খরচের বিবরণ</h3>
-            <div class="overflow-x-auto">
+        <div id="content-expenses" class="tab-content space-y-4">
+            <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
                 <table class="w-full text-left text-sm text-gray-600">
-                    <thead class="bg-rose-50 text-rose-800 font-semibold text-xs border-b">
+                    <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
                         <tr>
                             <th class="p-3">তারিখ</th>
-                            <th class="p-3">খরচের খাত</th>
-                            <th class="p-3">বিবরণ</th>
-                            <th class="p-3">পরিমাণ</th>
-                            <th class="p-3 text-right staff-only hidden">অ্যাকশন</th>
+                            <th class="p-3">খাতের নাম / বিবরণ</th>
+                            <th class="p-3 text-right">পরিমাণ</th>
                         </tr>
                     </thead>
-                    <tbody id="expenseTableBody" class="divide-y divide-gray-100"></tbody>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="p-3" colspan="3" class="text-center text-gray-400">কোনো তথ্য নেই</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- TAB 4: MEMBERS -->
-        <div id="content-members" class="tab-content hidden bg-white rounded-2xl shadow-md p-5 border border-gray-200 space-y-4">
-            <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-bold text-gray-800 text-base">সাধারণ সদস্য তালিকা</h3>
-                <button onclick="openMemberModal()" class="admin-only hidden bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3.5 py-2 rounded-xl font-semibold transition">+ নতুন সদস্য যোগ করুন</button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="memberGrid"></div>
-        </div>
-
-        <!-- TAB 5: SETTINGS & PIN MANAGEMENT (ADMIN ONLY) -->
-        <div id="content-settings" class="tab-content hidden bg-white rounded-2xl shadow-md p-6 border border-gray-200 space-y-6 admin-only hidden">
-            <h3 class="font-bold text-gray-800 text-base border-b pb-3">এডমিন ও অপারেটর পাসওয়ার্ড ম্যানেজমেন্ট</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Change Admin Pin -->
-                <div class="p-4 border rounded-xl bg-amber-50/50 space-y-3">
-                    <h4 class="font-bold text-gray-700 text-sm"><i class="fas fa-key text-amber-600 mr-2"></i>এডমিন পিন পরিবর্তন করুন</h4>
-                    <p class="text-xs text-gray-500">এডমিন পাসওয়ার্ড পরিবর্তন করতে নতুন পিন দিন।</p>
-                    <input type="password" id="newAdminPin" placeholder="নতুন ৪ সংখ্যার পিন" class="w-full border p-2.5 rounded-xl text-sm outline-none">
-                    <button onclick="updateAdminPin()" class="w-full bg-amber-600 hover:bg-amber-700 text-white text-sm font-bold py-2 rounded-xl transition">এডমিন পিন আপডেট করুন</button>
-                </div>
-
-                <!-- Change Operator Pin -->
-                <div class="p-4 border rounded-xl bg-blue-50/50 space-y-3">
-                    <h4 class="font-bold text-gray-700 text-sm"><i class="fas fa-user-shield text-blue-600 mr-2"></i>অপারেটর পিন পরিবর্তন করুন</h4>
-                    <p class="text-xs text-gray-500">অপারেটর পিন পরিবর্তন করুন।</p>
-                    <input type="password" id="newOperatorPin" placeholder="নতুন অপারেটর পিন" class="w-full border p-2.5 rounded-xl text-sm outline-none">
-                    <button onclick="updateOperatorPin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 rounded-xl transition">অপারেটর পিন আপডেট করুন</button>
-                </div>
+        <!-- TAB 4: SETTINGS & DATA MANAGEMENT (Admin Only) -->
+        <div id="content-settings" class="tab-content space-y-4 admin-only hidden">
+            <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 space-y-4">
+                <h3 class="font-bold text-gray-700 border-b pb-2">নতুন ডাটা যোগ করুন</h3>
+                <button onclick="openAddModal()" class="w-full bg-emerald-600 text-white py-2.5 rounded-lg font-semibold shadow hover:bg-emerald-700 transition">
+                    <i class="fa-solid fa-plus mr-1"></i> ডাটা এন্ট্রি ফর্ম
+                </button>
             </div>
         </div>
 
     </main>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30 flex justify-around py-2.5 text-xs font-semibold text-gray-600 no-print shadow-lg">
-        <button onclick="switchTab('subscriptions')" id="mob-tab-subscriptions" class="flex flex-col items-center text-emerald-600">
-            <i class="fas fa-calendar-check text-lg"></i>
-            <span>চাঁদা</span>
-        </button>
-        <button onclick="switchTab('donations')" id="mob-tab-donations" class="flex flex-col items-center">
-            <i class="fas fa-hand-holding-heart text-lg"></i>
-            <span>দান</span>
-        </button>
-        <button onclick="switchTab('expenses')" id="mob-tab-expenses" class="flex flex-col items-center">
-            <i class="fas fa-minus-circle text-lg"></i>
-            <span>ব্যয়</span>
-        </button>
-        <button onclick="switchTab('members')" id="mob-tab-members" class="flex flex-col items-center">
-            <i class="fas fa-users text-lg"></i>
-            <span>সদস্য</span>
-        </button>
-        <button onclick="switchTab('settings')" id="mob-tab-settings" class="flex flex-col items-center admin-only hidden">
-            <i class="fas fa-cogs text-lg"></i>
-            <span>সেটিংস</span>
-        </button>
-    </nav>
-
-    <!-- MODAL: LOGIN -->
-    <div id="authModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4">
-            <div class="text-center">
-                <div class="bg-emerald-100 text-emerald-700 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-800">লগইন প্যানেল</h3>
-                <p class="text-xs text-gray-500 mt-1">এডমিন (1234) বা অপারেটর (5678) পিন দিন</p>
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-lg text-gray-800">অ্যাডমিন লগইন</h3>
+                <button onclick="closeLoginModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            <input type="password" id="pinInput" placeholder="PIN লিখুন" class="w-full text-center text-2xl tracking-widest border border-gray-300 rounded-2xl p-3 focus:ring-2 focus:ring-emerald-500 outline-none">
-            <div class="flex gap-2 pt-2">
-                <button onclick="closeAuthModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl text-sm font-semibold transition">বাতিল</button>
-                <button onclick="verifyPin()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-semibold transition">প্রবেশ করুন</button>
+            <div class="space-y-3">
+                <label class="block text-sm font-medium text-gray-700">পিন কোড</label>
+                <input type="password" id="adminPin" placeholder="পিন দিন" class="w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <div class="flex space-x-3 pt-2">
+                <button onclick="closeLoginModal()" class="flex-1 bg-gray-100 text-gray-700 py-2.5 rounded-lg font-semibold">বাতিল</button>
+                <button onclick="handleLogin()" class="flex-1 bg-emerald-600 text-white py-2.5 rounded-lg font-semibold">লগইন</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL: ADD TRANSACTION -->
-    <div id="txModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
-            <h3 class="text-lg font-bold text-gray-800 border-b pb-3">নতুন হিসাব / এন্ট্রি যোগ করুন</h3>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">হিসাবের খাত / ক্যাটাগরি</label>
-                <select id="txCategory" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-                    <option value="monthly_sub">মাসিক চাঁদা</option>
-                    <option value="donation">দান ও অনুদান</option>
-                    <option value="expense">ব্যয় / খরচ</option>
-                </select>
-            </div>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">বিবরণ / সদস্যের নাম / দাতার নাম</label>
-                <input type="text" id="txTitle" placeholder="যেমন: আবদুর রহিম" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">টাকার পরিমাণ (৳)</label>
-                <input type="number" id="txAmount" placeholder="00" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">তারিখ</label>
-                <input type="date" id="txDate" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div class="flex gap-2 pt-2">
-                <button onclick="closeTxModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl text-sm font-semibold transition">বাতিল</button>
-                <button onclick="saveTransaction()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-semibold transition">সংরক্ষণ করুন</button>
-            </div>
-        </div>
-    </div>
+    <!-- JavaScript for Interactivity -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active style from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-emerald-600', 'bg-emerald-50');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+            // Show target tab content
+            document.getElementById('content-' + tabId).classList.add('active');
+            
+            // Highlight active button
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+            activeBtn.classList.add('text-emerald-600', 'bg-emerald-50');
+        }
 
-    <!-- MODAL: ADD MEMBER -->
-    <div id="memberModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4">
-            <h3 class="text-lg font-bold text-gray-800 border-b pb-3">নতুন সদস্য যোগ করুন</h3>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">সদস্যের নাম</label>
-                <input type="text" id="memberName" placeholder="নাম লিখুন" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">মোবাইল নম্বর</label>
-                <input type="text" id="memberPhone" placeholder="০১৭০০-০০০০০০" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div>
-                <label class="text-xs font-semibold text-gray-600">পেশা বা ঠিকানা</label>
-                <input type="text" id="memberAddress" placeholder="এলাকা / পেশা" class="w-full border border-gray-300 rounded-xl p-2.5 text-sm outline-none mt-1">
-            </div>
-            <div class="flex gap-2 pt-2">
-                <button onclick="closeMemberModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 rounded-xl text-sm font-semibold transition">বাতিল</button>
-                <button onclick="saveMember()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-semibold transition">সেভ করুন</button>
-            </div>
-        </div>
-    </div>
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
+        }
 
-    <!-- Firebase Script -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('flex');
+            document.getElementById('loginModal').classList.add('hidden');
+        }
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCShgbB89pXztyVLe5a9M0rGGbpTtf_0ss",
-            aut
+        function handleLogin() {
+            const pin = document.getElementById('adminPin').value;
+            // এখানে আপনার পিন চেক করার কোড থাকবে, আপাতত সাধারণ উদাহরণ হিসেবে '1234' ধরা হলো
+            if (pin === '1234') {
+                alert('সফলভাবে লগইন হয়েছে!');
+                document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+                closeLoginModal();
+            } else {
+                alert('ভুল পিন কোড!');
+            }
+        }
+    </script>
+</body>
+</html>
